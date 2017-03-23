@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	
+	// ["Label" , "website link" , "bar color" , "bar image"]
+	var social = [["facebook", "https://www.facebook.com/sancarlos1990/?ref=bookmarks", "#3B5998", "/modules/mod_sexy_social_bar/images/facebook.png"],["youtube", "http://www.youtube.com", "#c4302b", "/modules/mod_sexy_social_bar/images/youtube.png"],];
+
+	jQuery("#socialside").append('<ul class="mainul"></ul>');
+	
+	/// generating bars
+	for(var i=0;i<social.length;i++){
+	jQuery(".mainul").append("<li>" + '<ul class="scli" style="background-color:' + social[i][2] + '">' +
+						'<li>' + social[i][0] + '<img src="' + social[i][3] + '"/></li></ul></li>');
+	 				}
+	
+	/// bar click event
+	jQuery(".scli").click(function(){
+		var link = jQuery(this).text();		
+		for(var i=0;i<social.length;i++){
+			if(social[i][0] == link){
+				window.open(social[i][1]);
+			}
+		}		
+	});
+	
+	/// mouse hover event
+	jQuery(".scli").mouseenter(function() {	
+		jQuery(this).stop(true);	
+		jQuery(this).clearQueue();
+			jQuery(this).animate({
+				right : "140px"
+			}, 300);
+				
+	});
+
+	/// mouse out event
+	jQuery(".scli").mouseleave(function(){
+		jQuery(this).animate({
+			right:"42px"
+		},700,'easeOutBounce');
+	});
+
+});
+</script>
+
+</body>
+</html>
